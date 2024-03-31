@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đánh giá sản phẩm</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #fff;
+        }
+
+        .comment-container {
+            max-width: 600px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            background-color: #f8edeb;
+        }
+
+        .comment-section {
+            margin-top: 20px;
+            padding-left: 10px; /* Căn lề trái cho phần nội dung bình luận */
+        }
+
+        .comment-form {
+            margin-top: 20px;
+        }
+
+        .comment-form div {
+            margin-bottom: 10px;
+        }
+
+        .comment-form label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .comment-form textarea {
+            width: 100%;
+        }
+
+        .comment-section div {
+            border-top: 1px solid #ccc;
+            padding-top: 10px;
+            margin-top: 10px;
+        }
+
+        .comment-section strong {
+            color: #000; /* Màu của tên người bình luận */
+        }
+
+        .comment-section em {
+            color: #666; /* Màu của thời gian */
+        }
+
+        .comment-section span {
+            color: #333; /* Màu của nội dung bình luận */
+        }
+
+        .comment-section div:first-child {
+            border-top: none; /* Loại bỏ đường viền trên cùng cho phần tử đầu tiên */
+            padding-top: 0; /* Loại bỏ padding trên cùng cho phần tử đầu tiên */
+            margin-top: 0; /* Loại bỏ margin trên cùng cho phần tử đầu tiên */
+        }
+        .comment-form input[type="text"],
+        .comment-form textarea {
+          width: 92%; /* Đặt chiều rộng của hộp nhập liệu là 100% */
+          padding: 8px 16px;
+          border: 2px;
+          border-radius: 4px;
+    }
+    </style>
+</head>
+<body>
+
+<div class="comment-container">
+    <h1 style="text-align:center;color:#ee3300; font-size: 36px;">ĐÁNH GIÁ SẢN PHẨM</h1>
+
+    <div class="comment-section" id="default-comment">
+        <div>
+            <strong>Hằng Dương:</strong> <br>
+            <em>21:56 Thứ 5 9/9/2023</em> <br>
+            <span>Đã mua, đã sử dụng, sản phẩm khá ok, cầm rất chắc tay hợp giá tiền.</span>
+        </div>
+        <div>
+            <strong>Duy Duy:</strong> <br>
+            <em>5:39 Thứ 6 8/4/2023</em> <br> 
+            <span>Giao hàng nhanh chóng, chưa dùng nhưng mà test thấy, sẽ mua lại lần sau.</span>
+        </div>
+        <div>
+            <strong>Thanh Tình:</strong> <br>
+            <em>16:04 Thứ 7 31/1/2023</em> <br>
+            <span>Mày son lên chuẩn lắm, mọi người nên mua nha.</span>
+        </div>
+        <div>
+            <strong>Diễm:</strong> <br>
+            <em>17:01 Thứ 2 9/3/2023</em> <br>
+            <span>Rất hài lòng với sản phẩm, đóng gói cẩn thận.</span>
+        </div>
+    </div>
+
+    <div class="comment-section" id="comment-section">
+        <!-- Các bình luận sẽ được hiển thị ở đây -->
+    </div>
+
+    <h2 style="color:#7f5539">Đánh giá mới</h2>
+    <form class="comment-form" id="comment-form">
+        <div>
+          <section>
+    <input type="text" id="fullName" name="fullName" placeholder="Tên người dùng" required>
+</section>
+           
+        </div>
+        <div>
+          <section>
+    <textarea type="text" id="commnent" text="fullName" rows="5" placeholder="Bình luận" required></textarea>
+</section>
+           
+        </div>
+        <button type="submit">Đăng</button>
+    </form>
+</div>
+
+<script>
+    document.getElementById("comment-form").addEventListener("submit", function(event) {
+        event.preventDefault(); // Ngăn chặn form submit mặc định
+
+        var name = document.getElementById("name").value;
+        var comment = document.getElementById("comment").value;
+        var dateTime = new Date().toLocaleString(); // Lấy ngày và giờ hiện tại
+
+        // Tạo một phần tử mới cho bình luận
+        var commentElement = document.createElement("div");
+        commentElement.innerHTML = "<strong>" + name + ":</strong> " + "<br>" +
+                                    "<em>" + dateTime + "</em>" + "<br>" +
+                                    "<span>" + comment + "</span>";
+
+        // Thêm phần tử bình luận vào phần hiển thị bình luận
+        document.getElementById("comment-section").appendChild(commentElement);
+
+        // Xóa nội dung trong các trường input sau khi đã đăng bình luận
+        document.getElementById("name").value = "";
+        document.getElementById("comment").value = "";
+    });
+</script>
+
+</body>
+</html>
